@@ -20,6 +20,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.*;
 import java.util.logging.Level;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public class InventoryManager {
 
 

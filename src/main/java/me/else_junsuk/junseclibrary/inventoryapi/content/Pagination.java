@@ -4,6 +4,9 @@ import me.else_junsuk.junseclibrary.inventoryapi.ClickableItem;
 
 import java.util.Arrays;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public interface Pagination {
 
     ClickableItem[] getPageItems();

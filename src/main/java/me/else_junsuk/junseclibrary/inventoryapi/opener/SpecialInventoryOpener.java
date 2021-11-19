@@ -10,6 +10,9 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.List;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public class SpecialInventoryOpener implements InventoryOpener {
 
     private static final List<InventoryType> SUPPORTED = ImmutableList.of(

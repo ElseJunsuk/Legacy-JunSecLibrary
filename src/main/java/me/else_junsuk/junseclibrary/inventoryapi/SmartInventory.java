@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 @SuppressWarnings("unchecked")
 public class SmartInventory {
 

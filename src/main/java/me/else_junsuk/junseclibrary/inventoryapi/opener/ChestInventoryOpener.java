@@ -8,6 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public class ChestInventoryOpener implements InventoryOpener {
 
     @Override

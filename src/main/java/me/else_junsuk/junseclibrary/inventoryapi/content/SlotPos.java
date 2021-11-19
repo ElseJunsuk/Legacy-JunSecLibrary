@@ -1,5 +1,8 @@
 package me.else_junsuk.junseclibrary.inventoryapi.content;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public class SlotPos {
 
     private final int row;

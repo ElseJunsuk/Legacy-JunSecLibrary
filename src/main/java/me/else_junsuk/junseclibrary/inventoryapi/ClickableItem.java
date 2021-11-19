@@ -5,6 +5,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.function.Consumer;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public class ClickableItem {
 
     private ItemStack item;

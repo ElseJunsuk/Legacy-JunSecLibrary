@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public interface SlotIterator {
 
     enum Type {

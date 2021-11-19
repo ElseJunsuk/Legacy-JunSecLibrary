@@ -12,6 +12,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * 개발자 MinusKube님의 SmartInvAPI 입니다.
+ */
 public interface InventoryContents {
 
     SmartInventory inventory();
