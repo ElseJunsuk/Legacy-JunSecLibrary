@@ -47,7 +47,7 @@ public class F {
      * @return String
      */
     public static String format(String msg) {
-        if (Bukkit.getVersion().equals("1.17")) { // contains 1.17.1 또는 1.17
+        if (Bukkit.getVersion().contains("1.17.1")) {
             Matcher match = pattern.matcher(msg);
             while (match.find()) {
                 String color = msg.substring(match.start(), match.end());
