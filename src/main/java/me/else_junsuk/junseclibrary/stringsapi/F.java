@@ -4,6 +4,7 @@ import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -56,6 +57,52 @@ public class F {
             }
         }
         return ChatColor.translateAlternateColorCodes('&', msg);
+    }
+
+    /**
+     * 한 플레이어에게만 전달합니다.
+     * @param player - 플레이어에게 채팅을 출력합니다.
+     * @param message
+     */
+    public static void send(Player p, String msg) {
+        p.sendMessage(format(msg));
+    }
+
+    /**
+     * 한 플레이어에게만 전달합니다.
+     * @param player - 플레이어에게 채팅을 출력합니다.
+     * @param title
+     * @param subtitle
+     * @param in
+     * @param stay
+     * @param out
+     */
+    public static void send(Player p, String title, String subtitle, int in, int stay, int out) {
+        p.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
+    }
+
+    /**
+     * 모든 플레이어에게 메시지를 전달합니다.
+     * @param message
+     */
+    public static void sendAll(String msg) {
+        for (Player all : Bukkit.getOnlinePlayers()) {
+            all.sendMessage(format(msg));
+        }
+    }
+
+    /**
+     * 모든 플레이어에게 타이틀(Title)을 전달합니다.
+     * @param title
+     * @param subtitle
+     * @param in
+     * @param stay
+     * @param out
+     */
+    public static void sendAll(String title, String subtitle, int in, int stay, int out) {
+        for (Player all : Bukkit.getOnlinePlayers()) {
+            all.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
+        }
     }
 
     /**
