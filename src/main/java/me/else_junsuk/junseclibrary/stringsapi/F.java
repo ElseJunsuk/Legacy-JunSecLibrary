@@ -3,16 +3,11 @@ package me.else_junsuk.junseclibrary.stringsapi;
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.Arrays;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * @author Else_JunSuk
@@ -103,29 +98,6 @@ public class F {
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
         }
-    }
-
-    /**
-     * 플레이어의 머리를 ItemStack형식으로 불러옴.
-     * @param player
-     * @return ItemStack
-     */
-    public static ItemStack getPlayerSkull(String p) {
-        boolean isNetVersion = Arrays.stream(Material.values())
-                .map(Material::name).collect(Collectors.toList()).contains("PLAYER_HEAD");
-
-        Material type = Material.matchMaterial(isNetVersion ? "PLAYER_HEAD" : "SKULL_ITEM");
-        ItemStack item = new ItemStack(type, 1);
-
-        if (!isNetVersion)
-            item.setDurability((short) 3);
-
-        SkullMeta meta = (SkullMeta) item.getItemMeta();
-        meta.setOwner(p);
-
-        item.setItemMeta(meta);
-
-        return item;
     }
 
 }
