@@ -1,6 +1,7 @@
 package me.else_junsuk.junseclibrary;
 
 import lombok.Getter;
+import me.else_junsuk.junseclibrary.commands.CustomItems;
 import me.else_junsuk.junseclibrary.inventoryapi.InventoryManager;
 import me.else_junsuk.junseclibrary.listeners.PlayerChatListener;
 import me.else_junsuk.junseclibrary.stringsapi.F;
@@ -31,7 +32,9 @@ public class JunSecLibrary extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerChatListener(), this);
 
-        getServer().getConsoleSender().sendMessage("§2[ JUNSEC LIBRARY ] §f라이브러리의 모든 이벤트를 호출했습니다.");
+        new CustomItems(this);
+
+        getServer().getConsoleSender().sendMessage("§2[ JUNSEC LIBRARY ] §f라이브러리의 모든 이벤트와 커맨드를 호출했습니다.");
     }
 
     @Override
