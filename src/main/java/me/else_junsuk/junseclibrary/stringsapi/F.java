@@ -3,6 +3,8 @@ package me.else_junsuk.junseclibrary.stringsapi;
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.conversations.Conversable;
+import org.bukkit.conversations.ConversationContext;
 import org.bukkit.entity.Player;
 
 import java.util.logging.Logger;
@@ -61,6 +63,16 @@ public class F {
      */
     public static void send(Player p, String msg) {
         p.sendMessage(format(msg));
+    }
+
+    /**
+     * @param Conversble
+     * @param ConversationContext c
+     * @param message
+     */
+    public static void send(Conversable p, ConversationContext c, String msg) {
+        p = c.getForWhom();
+        p.sendRawMessage(F.format(msg));
     }
 
     /**
