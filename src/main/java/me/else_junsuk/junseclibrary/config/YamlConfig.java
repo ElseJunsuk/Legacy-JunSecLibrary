@@ -16,6 +16,7 @@
 
 package me.else_junsuk.junseclibrary.config;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -80,6 +81,13 @@ public class YamlConfig {
         }
     }
 
+    /**
+     * @since 1.1.0
+     * @return ConfigurationSection을 반환합니다.
+     */
+    public ConfigurationSection getConfigurationSection(String path) {
+        return config.getConfigurationSection(path);
+    }
 
     /**
      * @since 1.0.0
