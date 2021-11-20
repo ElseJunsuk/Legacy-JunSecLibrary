@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.else_junsuk.junseclibrary.commands.CustomItems;
 import me.else_junsuk.junseclibrary.inventoryapi.InventoryManager;
 import me.else_junsuk.junseclibrary.listeners.PlayerChatListener;
+import me.else_junsuk.junseclibrary.listeners.SignChangeListener;
 import me.else_junsuk.junseclibrary.stringsapi.F;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +32,7 @@ public class JunSecLibrary extends JavaPlugin {
     private void registerEvents() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerChatListener(), this);
+        pm.registerEvents(new SignChangeListener(), this);
 
         new CustomItems(this);
 
@@ -41,7 +43,7 @@ public class JunSecLibrary extends JavaPlugin {
     public void onDisable() {
 
         getServer().getConsoleSender().sendMessage("§c[ JUNSEC LIBRARY ] §f라이브러리를 종료합니다..");
-        F.log.warning("§c* 주의하세요! 서버가 불안정해질 수 있습니다.");
+        getServer().getConsoleSender().sendMessage("§c* 주의하세요! 서버가 불안정해질 수 있습니다.");
     }
 
     public static InventoryManager manager() { return invManager; }
