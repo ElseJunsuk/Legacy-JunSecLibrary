@@ -2,6 +2,9 @@ package me.else_junsuk.junseclibrary.stringsapi;
 
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
@@ -118,6 +121,23 @@ public class F {
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
         }
+    }
+
+    /**
+     * 이 메서드는 TextComponent형태로,
+     * 채팅에 호버링된 메시지를 출력할 수 있게 해줍니다.
+     * @param message - 출력 할 메시지
+     * @param hoveraction - Action.호버링액션
+     * @param hovermessage - 호버링 메시지
+     * @return TextComponent
+     */
+    public static TextComponent sendComponent(String message, HoverEvent.Action hoveraction, String hovermessage) {
+        TextComponent format = new TextComponent(format(message));
+        HoverEvent hover = new HoverEvent(hoveraction, new ComponentBuilder(hovermessage).create());
+
+        format.setHoverEvent(hover);
+//        player.spigot().sendMessage(format);
+        return format;
     }
 
 }
