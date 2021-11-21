@@ -3,6 +3,7 @@ package me.else_junsuk.junseclibrary.stringsapi;
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.entity.Player;
@@ -64,6 +65,13 @@ public class F {
     public static void send(Player p, String msg) {
         p.sendMessage(format(msg));
     }
+
+    /**
+     * 커맨드를 입력 한 플레이어에만 전달합니다.
+     * @param sender - 커맨드 입력 플레이어
+     * @param message
+     */
+    public static void send(CommandSender sender,String msg) { sender.sendMessage(format(msg)); }
 
     /**
      * @param Conversble
