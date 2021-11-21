@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -120,5 +121,23 @@ public class CustomItem {
         item.setItemMeta(meta);
 
         return item;
+    }
+
+    public static ItemStack createBook(@NonNull String title, String author, String... content) {
+        ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
+
+        BookMeta bookMeta = (BookMeta) book.getItemMeta();
+        bookMeta.setAuthor(author);
+        bookMeta.setTitle(F.format(title));
+
+        if (content != null) {
+            List<String> c = new ArrayList<>();
+            for (String string : content)
+                c.add(F.format(string));
+            bookMeta.setPages(c);
+        }
+
+        book.setItemMeta(bookMeta);
+        return book;
     }
 }
