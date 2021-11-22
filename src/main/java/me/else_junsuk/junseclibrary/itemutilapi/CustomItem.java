@@ -123,6 +123,13 @@ public class CustomItem {
         return item;
     }
 
+    /**
+     * WRITTEN_BOOK아이템에 내용을 적어 넣을 수 있습니다.
+     * @param title - 책의 제목.
+     * @param author - 책의 저자로 보일 이름.
+     * @param content - 책의 내용. ("", "") 시, 2페이지까지 서술됨. ("1페이지", "2페이지", ...)
+     * @return ItemStack
+     */
     public static ItemStack createBook(@NonNull String title, String author, String... content) {
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 

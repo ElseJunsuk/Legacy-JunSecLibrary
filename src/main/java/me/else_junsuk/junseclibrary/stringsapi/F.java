@@ -2,9 +2,6 @@ package me.else_junsuk.junseclibrary.stringsapi;
 
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
@@ -74,8 +71,8 @@ public class F {
      * @param player - 플레이어에게 채팅을 출력합니다.
      * @param message
      */
-    public static void send(Player p, String msg) {
-        p.sendMessage(format(msg));
+    public static void send(Player player, String msg) {
+        player.sendMessage(format(msg));
     }
 
     /**
@@ -83,7 +80,7 @@ public class F {
      * @param sender - 커맨드 입력 플레이어
      * @param message
      */
-    public static void send(CommandSender sender,String msg) { sender.sendMessage(format(msg)); }
+    public static void send(CommandSender sender, String msg) { sender.sendMessage(format(msg)); }
 
     /**
      * @param Conversble
@@ -130,23 +127,6 @@ public class F {
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
         }
-    }
-
-    /**
-     * 이 메서드는 TextComponent형태로,
-     * 채팅에 호버링된 메시지를 출력할 수 있게 해줍니다.
-     * @param message - 출력 할 메시지
-     * @param hoveraction - 호버링 액션
-     * @param builder - 컴포넌트 빌더
-     * @return TextComponent
-     */
-    public static TextComponent sendComponent(String message, HoverEvent.Action hoveraction, ComponentBuilder builder) {
-        TextComponent format = new TextComponent(format(message));
-        HoverEvent hover = new HoverEvent(hoveraction, builder.create());
-
-        format.setHoverEvent(hover);
-//        player.spigot().sendMessage(format);
-        return format;
     }
 
 }
