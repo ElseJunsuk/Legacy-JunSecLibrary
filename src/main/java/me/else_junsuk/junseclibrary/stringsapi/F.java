@@ -127,13 +127,13 @@ public class F {
      * 이 메서드는 TextComponent형태로,
      * 채팅에 호버링된 메시지를 출력할 수 있게 해줍니다.
      * @param message - 출력 할 메시지
-     * @param hoveraction - Action.호버링액션
-     * @param hovermessage - 호버링 메시지
+     * @param hoveraction - 호버링 액션
+     * @param builder - 컴포넌트 빌더
      * @return TextComponent
      */
-    public static TextComponent sendComponent(String message, HoverEvent.Action hoveraction, String hovermessage) {
+    public static TextComponent sendComponent(String message, HoverEvent.Action hoveraction, ComponentBuilder builder) {
         TextComponent format = new TextComponent(format(message));
-        HoverEvent hover = new HoverEvent(hoveraction, new ComponentBuilder(hovermessage).create());
+        HoverEvent hover = new HoverEvent(hoveraction, builder.create());
 
         format.setHoverEvent(hover);
 //        player.spigot().sendMessage(format);
