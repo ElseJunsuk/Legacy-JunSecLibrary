@@ -61,6 +61,15 @@ public class F {
     }
 
     /**
+     * 스 문자열 안에 있는 모든 색생을 제거합니다.
+     * @param message
+     * @return String
+     */
+    public static String deColor(String msg) {
+        return org.bukkit.ChatColor.stripColor(msg);
+    }
+
+    /**
      * 한 플레이어에게만 전달합니다.
      * @param player - 플레이어에게 채팅을 출력합니다.
      * @param message
