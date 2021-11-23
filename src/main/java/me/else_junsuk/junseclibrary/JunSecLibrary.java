@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class JunSecLibrary extends JavaPlugin {
 
     @Getter
-    public static JunSecLibrary main;
+    private static JunSecLibrary main;
 
     private static InventoryManager invManager;
 
@@ -23,8 +23,10 @@ public class JunSecLibrary extends JavaPlugin {
 
         invManager = new InventoryManager(this);
         invManager.init();
+
         F.sendConsole("&2[ JUNSEC LIBRARY ] &f라이브러리의 CustomInventoryAPI를 불러옵니다.");
         F.sendConsole("&2[ JUNSEC LIBRARY ] &f라이브러리의 StringManagerAPI를 불러옵니다.");
+        F.sendConsole("&2[ JUNSEC LIBRARY ] &f라이브러리의 CustomItemAPI를 불러옵니다.");
 
         registerEvents();
     }

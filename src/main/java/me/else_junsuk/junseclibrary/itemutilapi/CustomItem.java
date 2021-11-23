@@ -29,6 +29,31 @@ public class CustomItem {
      * @return ItemStack
      */
     public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull String displayname, @Nullable String... lore) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        ItemStack item = new ItemStack(type, amount);
+        ItemMeta meta = item.getItemMeta();
+        if (displayname != null)
+            meta.setDisplayName(F.format(displayname));
+        if (lore != null) {
+            List<String> list = new ArrayList<>();
+            for (String string : lore)
+                list.add(F.format(string));
+            meta.setLore(list);
+        }
+        if (glow){
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+        if (unbreaking)
+            meta.setUnbreakable(true);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    public static ItemStack customIteListLore(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull String displayname, @Nullable String[] lore) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
@@ -59,6 +84,8 @@ public class CustomItem {
      * @return ItemStack
      */
     public static ItemStack customSkull(@NonNull String playername, @NonNull int amount, @NonNull boolean glow, @NonNull String displayname, @Nullable String... lore) {
+        if (playername == null) throw new NullPointerException("머리 데이터를 가져올 플레이어의 이름(형태: String)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("머리의 새로운 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
 
         ItemStack skull = getPlayerSkull(playername);
 
