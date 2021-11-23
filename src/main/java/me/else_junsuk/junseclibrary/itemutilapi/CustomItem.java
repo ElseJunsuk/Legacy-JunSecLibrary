@@ -54,7 +54,7 @@ public class CustomItem {
     /**
      * ItemStack형태의 커스텀 아이템 생성을 도와주는 메서드.
      * 자바 엘립스(Ellipsis) 시스템을 사용하지 않은 메서드로,
-     * 로어에 문자 배열을 삽입할 수 있게 해줍니다.
+     * 로어에 문자 배열(String[])을 삽입할 수 있게 해줍니다.
      * @param type Material - 아이템의 타입(Material)을 설정.
      * @param amount int - 아이템의 갯수를 설정.
      * @param glow boolean - 아이템에 인첸트 효과(글로잉)가 적용되는지. (true-적용)
