@@ -145,6 +145,8 @@ public class CustomItem {
      * @return ItemStack
      */
     public static ItemStack getPlayerSkull(@NonNull String playername) {
+        if (playername == null) throw new NullPointerException("머리 데이터를 가져올 플레이어의 닉네임을 기입하세요. 플레이어의 이름은 null일 수 없습니다.");
+
         boolean isNetVersion = Arrays.stream(Material.values())
                 .map(Material::name).collect(Collectors.toList()).contains("PLAYER_HEAD");
 
@@ -169,7 +171,9 @@ public class CustomItem {
      * @param content - 책의 내용. ("", "") 시, 2페이지까지 서술됨. ("1페이지", "2페이지", ...)
      * @return ItemStack
      */
-    public static ItemStack createBook(@NonNull String title, String author, String... content) {
+    public static ItemStack createBook(@NonNull String title, @NonNull String author, @NonNull String... content) {
+        if (title == null) throw new NullPointerException("책의 제목(title)을 제대로 기입하셨나요? 제목은 null일 수 없습니다.");
+        if (author == null) throw new NullPointerException("책의 저자(author)을 제대로 기입하셨나요? 저자는 null일 수 없습니다.");
         ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
 
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
