@@ -29,4 +29,16 @@ public class P {
         player.openBook(book);
     }
 
+    /**
+     * 플레이어에게 현재 동결 틱을 설정합니다.
+     * (엔티티가 눈 파우더 속에 있었던 틱의 양)
+     * @param player
+     * @param ticks int - 20틱은 1초와 비례합니다.
+     */
+    public static void setFreeze(Player player, int ticks) {
+        for (int i = 1; i < ticks; i++) {
+            player.setFreezeTicks(i);
+        }
+    }
+
 }

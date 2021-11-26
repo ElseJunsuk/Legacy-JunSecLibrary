@@ -52,6 +52,48 @@ public class CustomItem {
     }
 
     /**
+     * @param type Material - 아이템의 타입(Material)을 설정.
+     * @param amount int - 아이템의 갯수를 설정.
+     * @param glow boolean - 아이템에 인첸트 효과(글로잉)가 적용되는지. (true-적용)
+     * @param flaghide boolean - 아이템에 flag를 삭제할건지 (true-삭제)
+     * @param unbreaking boolean - 아이템에 내구도 무한 효과가 적용되는지. (true-적용)
+     * @param displayname String - 아이템의 커스텀 이름 설정.
+     * @param lore String... - 아이템의 커스텀 로어 설정. 콤마(',')로 로어 줄 변경 가능.
+     * @return ItemStack
+     */
+    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull boolean flaghide, @NonNull String displayname, @Nullable String... lore) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        ItemStack item = new ItemStack(type, amount);
+        ItemMeta meta = item.getItemMeta();
+        if (displayname != null)
+            meta.setDisplayName(F.format(displayname));
+        if (lore != null) {
+            List<String> list = new ArrayList<>();
+            for (String string : lore)
+                list.add(F.format(string));
+            meta.setLore(list);
+        }
+        if (glow){
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+        if (unbreaking)
+            meta.setUnbreakable(true);
+        if (flaghide) {
+            meta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            meta.removeItemFlags(ItemFlag.HIDE_DYE);
+            meta.removeItemFlags(ItemFlag.HIDE_DESTROYS);
+            meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.removeItemFlags(ItemFlag.HIDE_PLACED_ON);
+            meta.removeItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+            meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        }
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
      * ItemStack형태의 커스텀 아이템 생성을 도와주는 메서드.
      * 자바 엘립스(Ellipsis) 시스템을 사용하지 않은 메서드로,
      * 로어에 문자 배열(String[])을 삽입할 수 있게 해줍니다.
