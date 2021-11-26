@@ -81,13 +81,13 @@ public class CustomItem {
         if (unbreaking)
             meta.setUnbreakable(true);
         if (flaghide) {
-            meta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            meta.removeItemFlags(ItemFlag.HIDE_DYE);
-            meta.removeItemFlags(ItemFlag.HIDE_DESTROYS);
-            meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
-            meta.removeItemFlags(ItemFlag.HIDE_PLACED_ON);
-            meta.removeItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
-            meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            meta.addItemFlags(ItemFlag.HIDE_DYE);
+            meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+            meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+            meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         }
         item.setItemMeta(meta);
         return item;
