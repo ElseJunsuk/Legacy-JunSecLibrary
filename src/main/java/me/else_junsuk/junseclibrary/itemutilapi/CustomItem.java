@@ -52,6 +52,43 @@ public class CustomItem {
     }
 
     /**
+     * 커스텀 아이템에 인첸트를 추가할 수 있습니다.
+     * @param type
+     * @param amount
+     * @param glow
+     * @param unbreaking
+     * @param enchant
+     * @param level
+     * @param displayname
+     * @param lore
+     * @return
+     */
+    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull Enchantment enchant, @NonNull int level, @NonNull String displayname, @Nullable String... lore) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (enchant == null) throw new NullPointerException("아이템의 인첸트(Enchant)를 제대로 기입하셨나요? 인첸트는 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        ItemStack item = new ItemStack(type, amount);
+        ItemMeta meta = item.getItemMeta();
+        if (displayname != null)
+            meta.setDisplayName(F.format(displayname));
+        if (lore != null) {
+            List<String> list = new ArrayList<>();
+            for (String string : lore)
+                list.add(F.format(string));
+            meta.setLore(list);
+        }
+        if (glow){
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+        if (unbreaking)
+            meta.setUnbreakable(true);
+        item.addUnsafeEnchantment(enchant, level);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
      * @param type Material - 아이템의 타입(Material)을 설정.
      * @param amount int - 아이템의 갯수를 설정.
      * @param glow boolean - 아이템에 인첸트 효과(글로잉)가 적용되는지. (true-적용)
