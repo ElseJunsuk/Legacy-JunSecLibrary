@@ -172,7 +172,7 @@ public class CustomItem {
      * @param boots ItemStack
      * @return ItemStack[]
      */
-    public static ItemStack[] equipArmor(@NonNull ItemStack helmet, @NonNull ItemStack chestplate, @NonNull ItemStack leggings, @NonNull ItemStack boots) {
+    public static ItemStack[] equipArmor(@Nullable ItemStack helmet, @Nullable ItemStack chestplate, @Nullable ItemStack leggings, @Nullable ItemStack boots) {
         ItemStack[] armor = new ItemStack[4];
         armor[3] = helmet;
         armor[2] = chestplate;
@@ -183,7 +183,7 @@ public class CustomItem {
 
     /**
      * 플레이어의 머리를 ItemStack형식으로 불러옴.
-     * @param string
+     * @param playername
      * @return ItemStack
      */
     public static ItemStack getPlayerSkull(@NonNull String playername) {
