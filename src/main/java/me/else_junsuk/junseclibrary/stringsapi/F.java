@@ -29,7 +29,7 @@ public class F {
     /**
      * 콘솔에 메시지를 출력.
      * @warning 본 메서드는 메인 클래스의 메인 인스턴스를 불러오지 못하면 치명적인 오류가 발생할 수 있습니다.
-     * @param message
+     * @param msg
      */
     public static void sendConsole(String msg) {
         JunSecLibrary.getMain().getServer().getConsoleSender().sendMessage(format(msg));
@@ -42,7 +42,7 @@ public class F {
 
     /**
      * 문자열에 포함된 HEX 코드를 색으로 트렌싱.
-     * @param message
+     * @param msg
      * @return String
      */
     public static String format(String msg) {
@@ -59,7 +59,7 @@ public class F {
 
     /**
      * 스 문자열 안에 있는 모든 색생을 제거합니다.
-     * @param message
+     * @param msg
      * @return String
      */
     public static String deColor(String msg) {
@@ -69,7 +69,7 @@ public class F {
     /**
      * 한 플레이어에게만 전달합니다.
      * @param player - 플레이어에게 채팅을 출력합니다.
-     * @param message
+     * @param msg
      */
     public static void send(Player player, String msg) {
         player.sendMessage(format(msg));
@@ -78,18 +78,18 @@ public class F {
     /**
      * 커맨드를 입력 한 플레이어에만 전달합니다.
      * @param sender - 커맨드 입력 플레이어
-     * @param message
+     * @param msg
      */
     public static void send(CommandSender sender, String msg) { sender.sendMessage(format(msg)); }
 
     /**
-     * @param Conversble
-     * @param ConversationContext c
-     * @param message
+     * @param conversble
+     * @param conversationContext
+     * @param msg
      */
-    public static void send(Conversable p, ConversationContext c, String msg) {
-        p = c.getForWhom();
-        p.sendRawMessage(F.format(msg));
+    public static void send(Conversable conversble, ConversationContext conversationContext, String msg) {
+        conversble = conversationContext.getForWhom();
+        conversble.sendRawMessage(F.format(msg));
     }
 
     /**
@@ -101,13 +101,13 @@ public class F {
      * @param stay
      * @param out
      */
-    public static void send(Player p, String title, String subtitle, int in, int stay, int out) {
-        p.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
+    public static void send(Player player, String title, String subtitle, int in, int stay, int out) {
+        player.sendTitle(format(title), format(subtitle), in, stay, out);
     }
 
     /**
      * 모든 플레이어에게 메시지를 전달합니다.
-     * @param message
+     * @param msg
      */
     public static void sendAll(String msg) {
         for (Player all : Bukkit.getOnlinePlayers()) {
@@ -125,7 +125,7 @@ public class F {
      */
     public static void sendAll(String title, String subtitle, int in, int stay, int out) {
         for (Player all : Bukkit.getOnlinePlayers()) {
-            all.sendTitle(format(title), format(subtitle), in*20, stay*20, out*20);
+            all.sendTitle(format(title), format(subtitle), in, stay, out);
         }
     }
 
