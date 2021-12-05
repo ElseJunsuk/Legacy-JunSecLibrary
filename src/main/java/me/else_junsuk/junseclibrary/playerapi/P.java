@@ -2,6 +2,7 @@ package me.else_junsuk.junseclibrary.playerapi;
 
 import me.else_junsuk.junseclibrary.itemutilapi.CustomItem;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ItemStack;
 
 public class P {
@@ -37,6 +38,9 @@ public class P {
      */
     public static void setFreeze(Player player, int ticks) {
         for (int i = 1; i < ticks; i++) {
+            if (player.getLastDamageCause().getCause() == DamageCause.FREEZE) {
+
+            }
             player.setFreezeTicks(i);
         }
     }
