@@ -48,14 +48,14 @@ public class YamlConfig {
      *
      * Please notice that the constructor does not yet create the YAML-configuration file. To create the file on the disk, use {@link YamlConfig#createConfig()}.
      */
-    public YamlConfig(String path, String name) {
+    public YamlConfig(File path, String name) {
 
         StringBuilder fileName = new StringBuilder();
         fileName.append(name).append(".yml");
         this.name = fileName.toString();
 
         YamlConfig = new File(path, this.name);
-        this.path = new File(path);
+        this.path = path;
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }
 
