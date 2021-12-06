@@ -2,11 +2,15 @@ package me.else_junsuk.junseclibrary.stringsapi;
 
 import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -103,6 +107,36 @@ public class F {
      */
     public static void send(Player player, String title, String subtitle, int in, int stay, int out) {
         player.sendTitle(format(title), format(subtitle), in, stay, out);
+    }
+
+
+    /**
+     * 일정 시간동안 액션 바가 재생됩니다. (-1 기입 시 무한 방복)
+     * @param player
+     * @param msg
+     * @param duration
+     */
+    public static void sendActionBar(Player player, String msg, int duration, Plugin main) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (duration == -1) {
+                    player.spigot().sendMessage(
+                            ChatMessageType.ACTION_BAR,
+                            new TextComponent(msg));
+                }
+                if (duration == 0) {
+                    player.spigot().sendMessage(
+                            ChatMessageType.ACTION_BAR,
+                            new TextComponent(" "));
+                    cancel();
+                } else {
+                    player.spigot().sendMessage(
+                            ChatMessageType.ACTION_BAR,
+                            new TextComponent(msg));
+                }
+            }
+        }.runTaskTimer(main, 0, 20);
     }
 
     /**
