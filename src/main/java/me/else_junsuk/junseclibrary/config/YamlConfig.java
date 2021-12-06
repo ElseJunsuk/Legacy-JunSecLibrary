@@ -37,25 +37,25 @@ public class YamlConfig {
 
     private File YamlConfig;
     private FileConfiguration config;
-    private File pluginDataFolder;
+    private File path;
     private String name;
 
 
     /**
      * @since 1.0.0
-     * @param pluginDataFolder The plugin's data directory, accessible with JavaPlugin#getDataFolder();
+     * @param path The file path
      * @param name The name of the config file excluding file extensions.
      *
      * Please notice that the constructor does not yet create the YAML-configuration file. To create the file on the disk, use {@link YamlConfig#createConfig()}.
      */
-    public YamlConfig(File pluginDataFolder, String name) {
+    public YamlConfig(File path, String name) {
 
         StringBuilder fileName = new StringBuilder();
         fileName.append(name).append(".yml");
         this.name = fileName.toString();
 
-        YamlConfig = new File(pluginDataFolder, this.name);
-        this.pluginDataFolder = pluginDataFolder;
+        YamlConfig = new File(path, this.name);
+        this.path = path;
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }
 
@@ -68,9 +68,9 @@ public class YamlConfig {
 
         if (! YamlConfig.exists()) {
 
-            if (! this.pluginDataFolder.exists()) {
+            if (! this.path.exists()) {
 
-                this.pluginDataFolder.mkdir();
+                this.path.mkdir();
             }
 
             try {
@@ -94,7 +94,7 @@ public class YamlConfig {
      * @return The configuration file's directory. To get its name, use {@link YamlConfig#getName()} instead.
      */
     public File getDirectory() {
-        return pluginDataFolder;
+        return path;
     }
 
     /**
@@ -224,7 +224,7 @@ public class YamlConfig {
      */
     public void wipeDirectory() {
         this.getDirectory().delete();
-        this.pluginDataFolder.mkdir();
+        this.path.mkdir();
     }
 
 
@@ -236,11 +236,11 @@ public class YamlConfig {
      * If the entered name is not a valid name for a directory or the sub-directory already exists or the data folder does not exist, an IOException will be thrown.
      */
     public void createSubDirectory(String name) throws IOException {
-        if (!pluginDataFolder.exists()) {
-            throw new IOException("데이터(Data)폴더를 찾을 수 없습니다.");
+        if (!this.path.exists()) {
+            throw new IOException("폴더를 찾을 수 없습니다.");
         }
 
-        File subDir = new File(pluginDataFolder, name);
+        File subDir = new File(this.path, name);
 
         if (subDir.exists()) {
             throw new IOException("서브 디렉토리(Sub directory)가 이미 존재합니다.");
