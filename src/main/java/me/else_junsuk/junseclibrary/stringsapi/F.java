@@ -50,7 +50,7 @@ public class F {
      * @return String
      */
     public static String format(String msg) {
-        if (Bukkit.getVersion().equals("1.18.1")) {
+        if (Bukkit.getVersion().contains("1.18.1")) {
             Matcher match = pattern.matcher(msg);
             while (match.find()) {
                 String color = msg.substring(match.start(), match.end());
