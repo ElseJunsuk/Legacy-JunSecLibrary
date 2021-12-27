@@ -52,6 +52,32 @@ public class CustomItem {
     }
 
     /**
+     * 커스텀 아이템의 이름과 로어을 설정하지 않습니다.
+     * @param type
+     * @param amount
+     * @param glow
+     * @param unbreaking
+     * @param enchant
+     * @param level
+     * @return
+     */
+    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull Enchantment enchant, @NonNull int level) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (enchant == null) throw new NullPointerException("아이템의 인첸트(Enchant)를 제대로 기입하셨나요? 인첸트는 null일 수 없습니다.");
+        ItemStack item = new ItemStack(type, amount);
+        ItemMeta meta = item.getItemMeta();
+        if (glow){
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+        if (unbreaking)
+            meta.setUnbreakable(true);
+        item.addUnsafeEnchantment(enchant, level);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
      * 커스텀 아이템에 인첸트를 추가할 수 있습니다.
      * @param type
      * @param amount
