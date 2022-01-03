@@ -154,4 +154,19 @@ public class F {
         }
     }
 
+    /**
+     * 파라미터에 입력된 문자열에 정수가 포함되어 있는지 확인합니다.
+     *
+     * @param string
+     * @return
+     */
+    public static boolean isInt(String string) {
+        try {
+            Integer.parseInt(string);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
 }
