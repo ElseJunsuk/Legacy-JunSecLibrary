@@ -57,7 +57,7 @@ public class P {
     }
 
     /**
-     * 플레이어를 특정 위치로 이동 시킵니다.
+     * 플레이어를 특정 위치로 이동 시킨 후 메시지를 출력합니다.
      * @param player
      * @param location
      * @param message
@@ -65,6 +65,21 @@ public class P {
     public static void teleport(Player player, Location location, String message) {
         player.teleport(location.clone().add(0, 0.3, 0));
         F.send(player, message);
+    }
+
+    /**
+     * 플레이어를 특정 위치로 이동 시키는데,
+     * Location클래스속 clone메소드를 사용해
+     * 플레이어가 타겟을 중심으로 어느 X,Y,Z좌표를
+     * 추가하여 이동시킬지 설정할 수 있습니다.
+     * @param player
+     * @param location
+     * @param clonex double - 위치를 중심으로 추가된 X좌표
+     * @param cloney double - 위치를 중심으로 추가된 Y좌표
+     * @param clonez double - 위치를 중심으로 추가된 Z좌표
+     */
+    public static void teleport(Player player, Location location, double clonex, double cloney, double clonez) {
+        player.teleport(location.clone().add(clonex, cloney, clonez));
     }
 
 }
