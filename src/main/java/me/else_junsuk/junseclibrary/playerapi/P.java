@@ -1,6 +1,7 @@
 package me.else_junsuk.junseclibrary.playerapi;
 
 import me.else_junsuk.junseclibrary.itemutilapi.CustomItem;
+import me.else_junsuk.junseclibrary.stringsapi.F;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -53,6 +54,17 @@ public class P {
      */
     public static void playSound(Player player, Location location, Sound sound, float volume, float pitch) {
         player.playSound(location, sound, volume, pitch);
+    }
+
+    /**
+     * 플레이어를 특정 위치로 이동 시킵니다.
+     * @param player
+     * @param location
+     * @param message
+     */
+    public static void teleport(Player player, Location location, String message) {
+        player.teleport(location.clone().add(0, 0.3, 0));
+        F.send(player, message);
     }
 
 }
