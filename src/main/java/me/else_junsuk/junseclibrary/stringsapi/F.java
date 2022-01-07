@@ -10,6 +10,7 @@ import org.bukkit.conversations.Conversable;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -104,7 +105,7 @@ public class F {
     /**
      * 한 플레이어에게만 전달합니다.
      *
-     * @param player   - 플레이어에게 채팅을 출력합니다.
+     * @param player   - 플레이어에게 타이틀을 출력합니다.
      * @param title
      * @param subtitle
      * @param in
@@ -113,6 +114,17 @@ public class F {
      */
     public static void send(Player player, String title, String subtitle, int in, int stay, int out) {
         player.sendTitle(format(title), format(subtitle), in, stay, out);
+    }
+
+    /**
+     * 그 플레이어에게 List<String>형삭 메시지를 전달합니다.
+     *
+     * @param player
+     * @param message
+     */
+    public static void send(Player player, List<String> message) {
+        for (String msg : message)
+            send(player, msg);
     }
 
 
