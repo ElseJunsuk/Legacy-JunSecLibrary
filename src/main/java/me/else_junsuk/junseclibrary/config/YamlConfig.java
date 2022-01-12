@@ -49,12 +49,6 @@ public class YamlConfig {
      * Please notice that the constructor does not yet create the YAML-configuration file. To create the file on the disk, use {@link YamlConfig#createConfig()}.
      */
 
-    public YamlConfig(File pluginDataFolder) {
-        YamlConfig = new File(pluginDataFolder, this.name);
-        this.pluginDataFolder = pluginDataFolder;
-        config = YamlConfiguration.loadConfiguration(YamlConfig);
-    }
-
     public YamlConfig(File pluginDataFolder, String name) {
 
         StringBuilder fileName = new StringBuilder();
