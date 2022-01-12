@@ -1,30 +1,19 @@
 package me.else_junsuk.junseclibrary.datasapi;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
-/**
- * SLAPI = Saving/Loading API
- * API for Saving and Loading Objects.
- * 오브젝트를 저장/로드할 수 있는 API입니다.
- * @author Tomsik68
- */
 public class D {
 
-    public static void save(Object obj, String path) throws Exception {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
-        oos.writeObject(obj);
-        oos.flush();
-        oos.close();
-    }
-
-    public static Object load(String path) throws Exception {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
-        Object result = ois.readObject();
-        ois.close();
-        return result;
+    /**
+     * 새로운 파일을 생성합니다.
+     *
+     * @param datafolder 데이터 폴더
+     * @param path '/'는 제외하여 폴더명만 기입 해야 합니다
+     * @return file
+     */
+    public static File getPathFolder(File datafolder, String path) {
+        File file = new File(datafolder + "/" + path);
+        return file;
     }
 
 }
