@@ -57,12 +57,13 @@ public class CustomItem {
      * @param amount
      * @param glow
      * @param unbreaking
+     * @param flaghide
      * @param custommodeldata
      * @param displayname
      * @param lore
      * @return
      */
-    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull int custommodeldata, @NonNull String displayname, @Nullable String... lore) {
+    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull boolean flaghide, @NonNull int custommodeldata, @NonNull String displayname, @Nullable String... lore) {
         if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
         if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
         ItemStack item = new ItemStack(type, amount);
@@ -81,6 +82,15 @@ public class CustomItem {
         }
         if (unbreaking)
             meta.setUnbreakable(true);
+        if (flaghide) {
+            meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            meta.addItemFlags(ItemFlag.HIDE_DYE);
+            meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addItemFlags(ItemFlag.HIDE_PLACED_ON);
+            meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+            meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+        }
         meta.setCustomModelData(custommodeldata);
         item.setItemMeta(meta);
         return item;
