@@ -52,6 +52,41 @@ public class CustomItem {
     }
 
     /**
+     * 커스텀 아이템의 모델을 변경합니다.
+     * @param type
+     * @param amount
+     * @param glow
+     * @param unbreaking
+     * @param custommodeldata
+     * @param displayname
+     * @param lore
+     * @return
+     */
+    public static ItemStack customItem(@NonNull Material type, @NonNull int amount, @NonNull boolean glow, @NonNull boolean unbreaking, @NonNull int custommodeldata, @NonNull String displayname, @Nullable String... lore) {
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        ItemStack item = new ItemStack(type, amount);
+        ItemMeta meta = item.getItemMeta();
+        if (displayname != null)
+            meta.setDisplayName(F.format(displayname));
+        if (lore != null) {
+            List<String> list = new ArrayList<>();
+            for (String string : lore)
+                list.add(F.format(string));
+            meta.setLore(list);
+        }
+        if (glow){
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+        if (unbreaking)
+            meta.setUnbreakable(true);
+        meta.setCustomModelData(custommodeldata);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
      * 커스텀 아이템의 이름과 로어을 설정하지 않습니다.
      * @param type
      * @param amount
