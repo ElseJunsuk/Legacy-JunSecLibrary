@@ -1,6 +1,5 @@
 package me.else_junsuk.junseclibrary.stringsapi;
 
-import me.else_junsuk.junseclibrary.JunSecLibrary;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -9,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -35,8 +35,8 @@ public class F {
      * @param msg
      * @warning 본 메서드는 메인 클래스의 메인 인스턴스를 불러오지 못하면 치명적인 오류가 발생할 수 있습니다.
      */
-    public static void sendConsole(String msg) {
-        JunSecLibrary.getMain().getServer().getConsoleSender().sendMessage(format(msg));
+    public static void sendConsole(Plugin main, String msg) {
+        main.getServer().getConsoleSender().sendMessage(format(msg));
     }
 
     /**

@@ -21,7 +21,7 @@ public class JunSecLibrary extends JavaPlugin {
     @Override
     public void onEnable() {
         main = this;
-        F.sendConsole("&2[ JUNSEC LIBRARY ] &f라이브러리 활성화를 시작합니다.");
+        F.sendConsole(this, "&2[ JUNSEC LIBRARY ] &f라이브러리 활성화를 시작합니다.");
 
         loadManagers();
         registerEvents();
@@ -32,7 +32,7 @@ public class JunSecLibrary extends JavaPlugin {
         invManager.init();
         localeManager = new LocaleManager();
 
-        F.sendConsole("&2[ JUNSEC LIBRARY ] &f라이브러리에 포함된 모든 API를 불러옵니다.");
+        F.sendConsole(this, "&2[ JUNSEC LIBRARY ] &f라이브러리에 포함된 모든 API를 불러옵니다.");
     }
 
     private void registerEvents() {
