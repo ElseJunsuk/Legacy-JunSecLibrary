@@ -40,7 +40,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>/Users/JUN/Desktop/Minecraft Servers/1.18.1/server/plugins/JunSecLibrary.jar</outputFile>
+                            <outputFile>/Users/JUN/Desktop/Minecraft Servers/1.19/server/plugins/JunSecLibrary.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

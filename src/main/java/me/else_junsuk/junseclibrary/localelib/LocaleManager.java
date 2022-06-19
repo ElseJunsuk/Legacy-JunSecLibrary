@@ -24,7 +24,6 @@
 
 package me.else_junsuk.junseclibrary.localelib;
 
-import org.apache.commons.lang.NullArgumentException;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -245,7 +244,7 @@ public class LocaleManager {
      * @return the raw key
      * @throws IllegalArgumentException if an item with that material could not be found
      */
-    public String queryMaterial(final Material material) throws IllegalArgumentException, NullArgumentException {
+    public String queryMaterial(final Material material) throws IllegalArgumentException {
         return queryMaterial(material, (short) 0, null);
     }
 
@@ -256,13 +255,13 @@ public class LocaleManager {
      * @param durability the material type to check
      * @return the raw key
      * @throws IllegalArgumentException if an item with that material and durability could not be found
-     * @throws NullArgumentException    if the specified material parameter is null
+//     * @throws NullArgumentException    if the specified material parameter is null
      */
     @SuppressWarnings("deprecation")
     public String queryMaterial(final Material material, final short durability, final ItemMeta meta)
-            throws IllegalArgumentException, NullArgumentException {
+            throws IllegalArgumentException {
         if (material == null) {
-            throw new NullArgumentException("[LocaleLib] Material cannot be null");
+//            throw new NullArgumentException("[LocaleLib] Material cannot be null");
         }
         String matKey = "";
         if (oldVersion) {
