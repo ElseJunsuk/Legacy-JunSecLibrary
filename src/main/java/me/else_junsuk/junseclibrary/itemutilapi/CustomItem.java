@@ -340,4 +340,32 @@ public class CustomItem {
         book.setItemMeta(bookMeta);
         return book;
     }
+
+    /**
+     *
+     * @param item - ItemStack. 이름을 바꿀 아이템
+     * @param displayName - String. 변경할 이름
+     * @return ItemStack
+     */
+    public static ItemStack setCustomName(@NonNull ItemStack item, @NonNull String displayName) {
+        if (displayName == null) throw new NullPointerException("아이템 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        if (item == null) throw new NullPointerException("베이스 아이템(Item)을 제대로 기입하셨나요? 베이스가 될(이름을 바꿀)아이템은 null일 수 없습니다.");
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(displayName);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    /**
+     *
+     * @param item - ItemStack. 타입을 바꿀 아이템
+     * @param type - Material. 변경할 타입
+     * @return ItemStack
+     */
+    public static ItemStack setItemType(@NonNull ItemStack item, @NonNull Material type) {
+        if (item == null) throw new NullPointerException("베이스 아이템(Item)을 제대로 기입하셨나요? 베이스가 될(이름을 바꿀)아이템은 null일 수 없습니다.");
+        if (type == null) throw new NullPointerException("아이템 타입(Material)을 제대로 기입하셨나요? 타입은 null일 수 없습니다.");
+        item.setType(type);
+        return item;
+    }
 }
