@@ -368,4 +368,22 @@ public class CustomItem {
         item.setType(type);
         return item;
     }
+
+    /**
+     * 아이템의 로어를 리플레이스 합니다.
+     * @param item
+     * @param psffix - 사용할 플레이스 홀더 ex) % -> %test%
+     * @param before - 타겟 문자열
+     * @param after - 리플레이스
+     * @return ItemStack
+     */
+    public static ItemStack replaceItemLore(@NonNull ItemStack item, String psffix, String before, String after) {
+        ItemMeta meta = item.getItemMeta();
+        ArrayList<String> lore = (ArrayList<String>) meta.getLore();
+        ArrayList<String> newLore = (ArrayList<String>) lore.stream().map(s -> s.replace(psffix + before + psffix, after)).collect(Collectors.toList());
+        meta.setLore(newLore);
+        item.setItemMeta(meta);
+
+        return item;
+    }
 }
