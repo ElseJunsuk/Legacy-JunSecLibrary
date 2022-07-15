@@ -63,6 +63,27 @@ public class F {
     }
 
     /**
+     * 문자 배열에 포함된 HEX 코드를 색으로 트렌싱.
+     *
+     * @param list
+     * @return List<String>
+     */
+    public static List<String> format(List<String> list) {
+        if (Bukkit.getVersion().contains("1.19")) {
+            for (String string : list) {
+                Matcher match = pattern.matcher(string);
+                while (match.find()) {
+                    String color = string.substring(match.start(), match.end());
+                    string = string.replace(color, ChatColor.of(color) + "");
+                    match = pattern.matcher(string);
+                }
+                ChatColor.translateAlternateColorCodes('&', string);
+            }
+        }
+        return list;
+    }
+
+    /**
      * 스 문자열 안에 있는 모든 색생을 제거합니다.
      *
      * @param msg
