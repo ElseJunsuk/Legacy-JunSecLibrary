@@ -243,6 +243,32 @@ public class CustomItem {
         return item;
     }
 
+    public static ItemStack customSkull(@NonNull String playername, @NonNull int amount, @NonNull boolean glow, @NonNull String displayname, @Nullable List<String> lore) {
+        if (playername == null) throw new NullPointerException("머리 데이터를 가져올 플레이어의 이름(형태: String)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+        if (displayname == null) throw new NullPointerException("머리의 새로운 이름(DisplayName)을 제대로 기입하셨나요? 이름은 null일 수 없습니다.");
+
+        ItemStack skull = getPlayerSkull(playername);
+
+        ItemMeta meta = skull.getItemMeta();
+
+        if (displayname != null)
+            meta.setDisplayName(F.format(displayname));
+        if (lore != null) {
+            List<String> list = new ArrayList<>();
+            for (String string : lore)
+                list.add(F.format(string));
+            meta.setLore(list);
+        }
+        if (glow) {
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            meta.addEnchant(Enchantment.DURABILITY, 1, true);
+        }
+
+        skull.setAmount(amount);
+        skull.setItemMeta(meta);
+        return skull;
+    }
+
     /**
      * ItemStack형태의 커스텀 아이템 생성을 도와주는 메서드.
      * 자바 엘립스(Ellipsis) 시스템을 사용하지 않은 메서드로,
@@ -308,6 +334,7 @@ public class CustomItem {
             meta.addEnchant(Enchantment.DURABILITY, 1, true);
         }
 
+        skull.setAmount(amount);
         skull.setItemMeta(meta);
         return skull;
     }
