@@ -8,12 +8,12 @@ import org.bukkit.entity.Player;
 
 public abstract class Command implements CommandExecutor {
 
-    protected JunSecLibrary main;
+    protected JunSecLibrary plugin;
     protected String name;
 
     public Command(JunSecLibrary main, String name) {
-        this.main = main;
-        PluginCommand pc = main.getCommand(name);
+        this.plugin = main;
+        PluginCommand pc = main.getPlugin().getCommand(name);
         pc.setExecutor(this);
     }
 

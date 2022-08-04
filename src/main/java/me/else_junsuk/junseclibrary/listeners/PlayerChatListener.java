@@ -1,17 +1,20 @@
 package me.else_junsuk.junseclibrary.listeners;
 
-import me.else_junsuk.junseclibrary.JunSecLibrary;
 import me.else_junsuk.junseclibrary.stringsapi.F;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlayerChatListener implements Listener {
 
-    public PlayerChatListener(JunSecLibrary main) {
-        JunSecLibrary.getMain().getServer().getPluginManager().registerEvents(this, main);
+    private JavaPlugin plugin;
+
+    public PlayerChatListener(JavaPlugin plugin) {
+        this.plugin = plugin;
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler(priority = EventPriority.LOW)

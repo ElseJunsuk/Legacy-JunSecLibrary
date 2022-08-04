@@ -5,14 +5,17 @@ import java.io.*;
 public class D {
 
     /**
-     * 새로운 파일을 생성합니다.
+     * 폴더 속 새로운 파일을 생성합니다.
      *
-     * @param datafolder 데이터 폴더
-     * @param path '/'는 제외하여 폴더명만 기입 해야 합니다
-     * @return file
+     * @param folder 데이터 폴더 (상위 폴더)
+     * @param path '/'를 제외한 파일명
+     * @return {@link java.util.List}
      */
-    public static File getPathFolder(File datafolder, String path) {
-        File file = new File(datafolder + "/" + path);
+    public static File getFolder(File folder, String path) {
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+        File file = new File(folder + "/" + path);
         return file;
     }
 

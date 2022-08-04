@@ -13,7 +13,9 @@ import java.util.List;
 
 public class CustomItems extends Command {
 
-    public CustomItems(JunSecLibrary main) { super(main, "customitem"); }
+    public CustomItems(JunSecLibrary main) {
+        super(main, "customitem");
+    }
 
     @Override
     public void execute(Player p, String[] args) {

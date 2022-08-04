@@ -20,7 +20,7 @@ public class C {
     }
 
     /**
-     * 파라미터 min과 max사이에서 랜덤한 숫자를 생성합니다.
+     * 파라미터 min~max사이의 정수 형태의 난수를 생성합니다.
      * @param min
      * @param max
      * @return int
