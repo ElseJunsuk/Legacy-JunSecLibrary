@@ -1,19 +1,19 @@
 package me.else_junsuk.junseclibrary.commands;
 
-import me.else_junsuk.junseclibrary.JunSecLibrary;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public abstract class Command implements CommandExecutor {
 
-    protected JunSecLibrary plugin;
+    protected JavaPlugin plugin;
     protected String name;
 
-    public Command(JunSecLibrary main, String name) {
-        this.plugin = main;
-        PluginCommand pc = main.getPlugin().getCommand(name);
+    public Command(JavaPlugin plugin, String name) {
+        this.plugin = plugin;
+        PluginCommand pc = plugin.getCommand(name);
         pc.setExecutor(this);
     }
 

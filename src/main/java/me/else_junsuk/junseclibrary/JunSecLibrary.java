@@ -20,7 +20,7 @@ public class JunSecLibrary {
         this.localeManager = new LocaleManager();
         new PlayerChatListener(plugin);
         new SignChangeListener(plugin);
-        new CustomItems(this);
+        new CustomItems(plugin);
     }
 
     public JavaPlugin getPlugin() {

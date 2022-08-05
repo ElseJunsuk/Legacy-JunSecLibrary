@@ -1,20 +1,20 @@
 package me.else_junsuk.junseclibrary.commands;
 
-import me.else_junsuk.junseclibrary.JunSecLibrary;
 import me.else_junsuk.junseclibrary.stringsapi.F;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomItems extends Command {
 
-    public CustomItems(JunSecLibrary main) {
-        super(main, "customitem");
+    public CustomItems(JavaPlugin plugin) {
+        super(plugin, "customitem");
     }
 
     @Override
