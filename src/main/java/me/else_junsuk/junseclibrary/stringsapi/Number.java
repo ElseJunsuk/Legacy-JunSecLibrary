@@ -1,21 +1,29 @@
 package me.else_junsuk.junseclibrary.stringsapi;
 
+import org.bukkit.plugin.java.JavaPlugin;
+
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class C {
+public class Number {
+
+    private JavaPlugin plugin;
+
+    public Number(JavaPlugin plugin) {
+        this.plugin = plugin;
+    }
 
     /**
      * Double형태의 소수를 #.##으로 포멧합니다. ex) 1.23456... -> 1.23
      */
-    public static DecimalFormat doubleFormatter = new DecimalFormat("#.##");
-    public static DecimalFormat doubleP3Formatter = new DecimalFormat("#.###");
+    public DecimalFormat doubleFormatter = new DecimalFormat("#.##");
+    public DecimalFormat doubleP3Formatter = new DecimalFormat("#.###");
 
-    public static Double doubleFormat(double doub) {
+    public Double doubleFormat(double doub) {
         return Double.parseDouble(doubleFormatter.format(doub));
     }
 
-    public static Double doubleP3Format(double doub) {
+    public Double doubleP3Format(double doub) {
         return Double.parseDouble(doubleP3Formatter.format(doub));
     }
 
@@ -25,7 +33,7 @@ public class C {
      * @param max
      * @return int
      */
-    public static int randomInt(int min, int max) {
+    public int randomInt(int min, int max) {
         Random rand = new Random();
         return rand.nextInt((max - min) + 1) + min;
     }

@@ -1,7 +1,8 @@
 package me.else_junsuk.junseclibrary.itemutilapi;
 
 import lombok.NonNull;
-import me.else_junsuk.junseclibrary.stringsapi.F;
+import me.else_junsuk.junseclibrary.JunSecLibrary;
+import me.else_junsuk.junseclibrary.stringsapi.Format;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
@@ -9,6 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -17,6 +19,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CustomItem {
+
+    private JavaPlugin plugin;
+    private static Format format;
+
+    public CustomItem(JavaPlugin plugin) {
+        this.plugin = plugin;
+        this.format = new JunSecLibrary(plugin).getFormat();
+    }
 
     /**
      * ItemStack형태의 커스텀 아이템 생성을 도와주는 메서드.
@@ -34,11 +44,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -69,11 +79,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -141,11 +151,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -175,11 +185,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -217,11 +227,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -252,11 +262,11 @@ public class CustomItem {
         ItemMeta meta = skull.getItemMeta();
 
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow) {
@@ -287,11 +297,11 @@ public class CustomItem {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow){
@@ -322,11 +332,11 @@ public class CustomItem {
         ItemMeta meta = skull.getItemMeta();
 
         if (displayname != null)
-            meta.setDisplayName(F.format(displayname));
+            meta.setDisplayName(format.format(displayname));
         if (lore != null) {
             List<String> list = new ArrayList<>();
             for (String string : lore)
-                list.add(F.format(string));
+                list.add(format.format(string));
             meta.setLore(list);
         }
         if (glow) {
@@ -397,12 +407,12 @@ public class CustomItem {
 
         BookMeta bookMeta = (BookMeta) book.getItemMeta();
         bookMeta.setAuthor(author);
-        bookMeta.setTitle(F.format(title));
+        bookMeta.setTitle(format.format(title));
 
         if (content != null) {
             List<String> c = new ArrayList<>();
             for (String string : content)
-                c.add(F.format(string));
+                c.add(format.format(string));
             bookMeta.setPages(c);
         }
 
