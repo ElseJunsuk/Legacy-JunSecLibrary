@@ -7,10 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,31 +20,20 @@ import java.util.regex.Pattern;
  */
 public class Format {
 
-    private JavaPlugin plugin;
-
-    public Format(JavaPlugin plugin) {
-        this.plugin = plugin;
-    }
-
-    /**
-     * 버킷에 info, warning로그를 분류하여 출력합니다.
-     */
-    public final Logger log = Logger.getLogger("Minecraft");
-
     /**
      * 콘솔에 메시지를 출력.
      *
      * @param msg
      * @warning 본 메서드는 메인 클래스의 메인 인스턴스를 불러오지 못하면 치명적인 오류가 발생할 수 있습니다.
      */
-    public void sendConsole(Plugin main, String msg) {
+    public static void sendConsole(Plugin main, String msg) {
         main.getServer().getConsoleSender().sendMessage(format(msg));
     }
 
     /**
      * HEX 코드를 사용하기 위해 필요한 패턴 구조.
      */
-    public final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
+    public static final Pattern pattern = Pattern.compile("#[a-fA-F0-9]{6}");
 
     /**
      * 문자열에 포함된 HEX 코드를 색으로 트렌싱.
@@ -54,7 +41,7 @@ public class Format {
      * @param msg
      * @return String
      */
-    public String format(String msg) {
+    public static String format(String msg) {
         if (Bukkit.getVersion().contains("1.19")) {
             Matcher match = pattern.matcher(msg);
             while (match.find()) {
@@ -72,7 +59,7 @@ public class Format {
      * @param list
      * @return List<String>
      */
-    public List<String> format(List<String> list) {
+    public static List<String> format(List<String> list) {
         if (Bukkit.getVersion().contains("1.19")) {
             for (String string : list) {
                 Matcher match = pattern.matcher(string);
@@ -93,7 +80,7 @@ public class Format {
      * @param msg
      * @return String
      */
-    public String deColor(String msg) {
+    public static String deColor(String msg) {
         return org.bukkit.ChatColor.stripColor(msg);
     }
 
@@ -103,7 +90,7 @@ public class Format {
      * @param player - 플레이어에게 채팅을 출력합니다.
      * @param msg
      */
-    public void send(Player player, String msg) {
+    public static void send(Player player, String msg) {
         player.sendMessage(format(msg));
     }
 
@@ -113,7 +100,7 @@ public class Format {
      * @param sender - 커맨드 입력 플레이어
      * @param msg
      */
-    public void send(CommandSender sender, String msg) {
+    public static void send(CommandSender sender, String msg) {
         sender.sendMessage(format(msg));
     }
 
@@ -127,7 +114,7 @@ public class Format {
      * @param stay
      * @param out
      */
-    public void send(Player player, String title, String subtitle, int in, int stay, int out) {
+    public static void send(Player player, String title, String subtitle, int in, int stay, int out) {
         player.sendTitle(format(title), format(subtitle), in, stay, out);
     }
 
@@ -137,7 +124,7 @@ public class Format {
      * @param player
      * @param message
      */
-    public void send(Player player, List<String> message) {
+    public static void send(Player player, List<String> message) {
         for (String msg : message)
             send(player, msg);
     }
@@ -149,7 +136,7 @@ public class Format {
      * @param player
      * @param msg
      */
-    public void sendActionBar(Player player, String msg) {
+    public static void sendActionBar(Player player, String msg) {
         player.spigot().sendMessage(
                 ChatMessageType.ACTION_BAR,
                 new TextComponent(format(msg)));
@@ -160,7 +147,7 @@ public class Format {
      *
      * @param msg
      */
-    public void sendAll(String msg) {
+    public static void sendAll(String msg) {
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendMessage(format(msg));
         }
@@ -175,7 +162,7 @@ public class Format {
      * @param stay
      * @param out
      */
-    public void sendAll(String title, String subtitle, int in, int stay, int out) {
+    public static void sendAll(String title, String subtitle, int in, int stay, int out) {
         for (Player all : Bukkit.getOnlinePlayers()) {
             all.sendTitle(format(title), format(subtitle), in, stay, out);
         }
@@ -187,7 +174,7 @@ public class Format {
      * @param string
      * @return
      */
-    public boolean isInt(String string) {
+    public static boolean isInt(String string) {
         try {
             Integer.parseInt(string);
         } catch (NumberFormatException nfe) {

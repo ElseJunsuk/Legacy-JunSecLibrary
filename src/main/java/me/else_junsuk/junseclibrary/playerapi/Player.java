@@ -1,41 +1,17 @@
 package me.else_junsuk.junseclibrary.playerapi;
 
-import me.else_junsuk.junseclibrary.JunSecLibrary;
-import me.else_junsuk.junseclibrary.itemutilapi.CustomItem;
+import me.else_junsuk.junseclibrary.stringsapi.Format;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public class Player {
 
-    private JavaPlugin plugin;
-
-    public Player(JavaPlugin plugin) {
-        this.plugin = plugin;
-    }
-
     /**
-     * 아래 메서드에서 책 ItemStack을 정의 후,
-     * 바로 플레이어에게 펼쳐줍니다.
-     * @since 1.2.1
-     * @param player 타겟
-     * @param title 책의 제목.
-     * @param author 책의 저자.
-     * @param content 책의 내용. ','사용 시 페이지 변경.
-     */
-    public void openCreateBook(org.bukkit.entity.Player player, String title, String author, String... content) {
-        ItemStack book = CustomItem.createBook(title, author, content);
-        player.openBook(book);
-    }
-
-    /**
-     * 책을 플레이어에게 펼쳐줍니다.
-     * @since 1.2.1
+     * 정의된 책을 플레이어에게 펼쳐줍니다.
      * @param player 타겟
      */
-    public void openBook(org.bukkit.entity.Player player, ItemStack book) {
-        player.openBook(book);
+    public static void openBook(Player player, ItemStack book) {
+        openBook(player, book);
     }
 
     /**
@@ -44,22 +20,10 @@ public class Player {
      * @param player 타겟
      * @param ticks 20틱은 1초와 비례합니다.
      */
-    public void setFreeze(org.bukkit.entity.Player player, int ticks) {
+    public static void setFreeze(org.bukkit.entity.Player player, int ticks) {
         for (int i = 1; i < ticks; i++) {
             player.setFreezeTicks(i);
         }
-    }
-
-    /**
-     * 플레이어에게 사운드를 들려줍니다.
-     * @param player 타겟
-     * @param location 위치
-     * @param sound 사운드 타입 {@link Sound}
-     * @param volume double 형태의 볼륨
-     * @param pitch double 형태의 피치
-     */
-    public void playSound(org.bukkit.entity.Player player, Location location, Sound sound, float volume, float pitch) {
-        player.playSound(location, sound, volume, pitch);
     }
 
     /**
@@ -68,9 +32,9 @@ public class Player {
      * @param location 위치
      * @param message 프라이빗 출력 메시지
      */
-    public void teleport(org.bukkit.entity.Player player, Location location, String message) {
+    public static void teleport(org.bukkit.entity.Player player, Location location, String message) {
         player.teleport(location.clone().add(0, 0.3, 0));
-        new JunSecLibrary(plugin).getFormat().send(player, message);
+        Format.send(player, message);
     }
 
     /**
@@ -84,7 +48,7 @@ public class Player {
      * @param cloney 위치를 중심으로 추가된 Y좌표
      * @param clonez 위치를 중심으로 추가된 Z좌표
      */
-    public void teleport(org.bukkit.entity.Player player, Location location, double clonex, double cloney, double clonez) {
+    public static void teleport(org.bukkit.entity.Player player, Location location, double clonex, double cloney, double clonez) {
         player.teleport(location.clone().add(clonex, cloney, clonez));
     }
 
