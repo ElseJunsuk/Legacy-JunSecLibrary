@@ -13,7 +13,7 @@ public class JunSecLibrary {
         this.localeManager = new LocaleManager();
     }
 
-    public JavaPlugin getPlugin() {
+    public JavaPlugin getJunSecLibrary() {
         return plugin;
     }
 
