@@ -33,6 +33,7 @@ import java.util.Map;
  *
  * This software is open source and free. You may use it for every need without explicit permission from the author. This includes adaptations, modifications and commercial use.
  */
+@Deprecated
 public class YamlConfig {
 
     private File YamlConfig;
