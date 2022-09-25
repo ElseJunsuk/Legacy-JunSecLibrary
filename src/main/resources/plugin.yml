@@ -1,7 +1,7 @@
 name: JunSecLibrary
 version: '${project.version}'
 main: me.else_junsuk.junseclibrary.JunSecLibrary
-api-version: 1.17
+api-version: 1.19
 authors: [ Else_JunSuk ]
 description: JunSuk이 개발한 전 마인크래프트 플러그인에 첨가되어 있는 유용한 라이브러리.
 commands:
